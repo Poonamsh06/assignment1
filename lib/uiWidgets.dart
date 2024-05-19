@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class UiHelper {
   static CustomizeTextField(
@@ -8,8 +9,8 @@ class UiHelper {
       obscureText: ishide,
       decoration: InputDecoration(
           hintText: text,
-          prefixIcon: icon,
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+          suffixIcon: icon,
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(15))),
     );
   }
 
@@ -19,9 +20,20 @@ class UiHelper {
       width: 200,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(25))),
-        child: Text(text),
+          backgroundColor: const Color.fromARGB(
+            255,
+            69,
+            29,
+            138,
+          ),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        ),
+        child: Text(
+          text,
+          style: TextStyle(
+              color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+        ),
         onPressed: () {
           voidCallBack();
         },
@@ -34,6 +46,13 @@ class UiHelper {
       height: MediaQuery.of(context).size.height * 0.2,
       child: AlertDialog(
         title: Text(text),
+        actions: [
+          TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text("Ok"))
+        ],
       ),
     );
   }
