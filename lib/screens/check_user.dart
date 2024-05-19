@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_tut/screens/final.dart';
 import 'package:firebase_tut/screens/login.dart';
+import 'package:firebase_tut/screens/show_data.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -21,7 +22,7 @@ class _CheckUserState extends State<CheckUser> {
   checkUser() {
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
-      return FinalPage();
+      return ShowData();
     } else {
       return Home();
     }

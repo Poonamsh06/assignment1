@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_tut/screens/final.dart';
 import 'package:firebase_tut/screens/forget_passward.dart';
+import 'package:firebase_tut/screens/show_data.dart';
 import 'package:firebase_tut/screens/sign_up.dart';
 import 'package:firebase_tut/services.dart';
 import 'package:firebase_tut/uiWidgets.dart';
@@ -83,7 +84,7 @@ class _HomeState extends State<Home> {
             .signInWithEmailAndPassword(email: email, password: password);
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => FinalPage()),
+          MaterialPageRoute(builder: (context) => ShowData()),
         );
         // .then((value) => Navigator.push(
         //     context, MaterialPageRoute(builder: (context) => FinalPage())));
