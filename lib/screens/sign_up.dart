@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_tut/screens/show_data.dart';
 import 'package:firebase_tut/uiWidgets.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -80,7 +81,7 @@ class _SignUpState extends State<SignUp> {
             .createUserWithEmailAndPassword(email: email, password: password);
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => FinalPage()),
+          MaterialPageRoute(builder: (context) => ShowData()),
         );
         // .then((value) => Navigator.push(
         //     context, MaterialPageRoute(builder: (context) => FinalPage())));

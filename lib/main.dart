@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_tut/screens/add_data.dart';
 import 'package:firebase_tut/screens/check_user.dart';
 import 'package:firebase_tut/screens/login.dart';
+import 'package:firebase_tut/screens/show_data.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/phone_auth.dart';
@@ -25,7 +27,9 @@ class MyApp extends StatelessWidget {
               seedColor: const Color.fromARGB(255, 69, 29, 138)),
           useMaterial3: true,
         ),
-        home: PhoneAuth());
+        home: AddData());
+
+    // CheckUser());
     //Home());
     //SignUpPage());
   }
