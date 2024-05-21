@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_tut/screens/add_data.dart';
 import 'package:firebase_tut/uiWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -16,6 +17,16 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   File? pickedImage;
   signUp(
     String email,
@@ -30,6 +41,8 @@ class _SignUpPageState extends State<SignUpPage> {
             .createUserWithEmailAndPassword(email: email, password: password);
 
         await uploadData();
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => AddData()));
       } catch (ex) {
         log(ex.toString());
       }
@@ -86,8 +99,6 @@ class _SignUpPageState extends State<SignUpPage> {
         });
   }
 
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

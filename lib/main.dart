@@ -3,6 +3,7 @@ import 'package:firebase_tut/screens/add_data.dart';
 import 'package:firebase_tut/screens/check_user.dart';
 import 'package:firebase_tut/screens/cloud_firestore/sign_up2.dart';
 import 'package:firebase_tut/screens/login.dart';
+import 'package:firebase_tut/screens/notifications_services.dart';
 import 'package:firebase_tut/screens/show_data.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,7 +12,9 @@ import 'screens/phone_auth.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp();
+  await NotificationsService.initilize();
   runApp(const MyApp());
 }
 

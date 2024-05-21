@@ -42,18 +42,15 @@ class UiHelper {
   }
 
   static CustomizeAlertBox(BuildContext context, String text) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.2,
-      child: AlertDialog(
-        title: Text(text),
-        actions: [
-          TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text("Ok"))
-        ],
-      ),
+    return AlertDialog(
+      title: Text(text),
+      actions: [
+        TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text("Ok"))
+      ],
     );
   }
 }
