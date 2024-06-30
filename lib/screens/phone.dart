@@ -119,11 +119,11 @@ class _PhonePageState extends State<PhonePage> {
                       phoneNumber: phoneNumber);
                 }),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.325,
+              height: MediaQuery.of(context).size.height * 0.322,
             ),
             Image.asset(
+              'assets/images/p4.png',
               width: screenWidth,
-              'assets/images/p3.png',
               fit: BoxFit.fill,
             ),
           ],
