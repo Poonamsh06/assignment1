@@ -51,7 +51,7 @@ class _PhonePageState extends State<PhonePage> {
             SizedBox(height: 8.h),
             Center(
               child: UiHelper.customizeTextSmall(
-                'You’ll receive a 6-digit code to verify next.',
+                'You’ll receive a 6-digit code\nto verify next.',
               ),
             ),
             SizedBox(height: 32.h),
@@ -67,12 +67,15 @@ class _PhonePageState extends State<PhonePage> {
                     children: [
                       Image.asset('assets/images/india 2.png'),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 15),
+                        padding: EdgeInsets.only(left: 10.h),
                         child: UiHelper.customizeTextCountry('+91'),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        padding: EdgeInsets.only(left: 16.h),
                         child: UiHelper.customizeTextCountry('-'),
+                      ),
+                      SizedBox(
+                        width: 16.w,
                       ),
                       Expanded(
                         child: TextField(

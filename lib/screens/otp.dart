@@ -79,13 +79,13 @@ class _OtpPageState extends State<OtpPage> with CodeAutoFill {
               ),
               SizedBox(height: 24.h),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(8.0),
                 child: PinFieldAutoFill(
                   controller: otpController,
                   decoration: BoxLooseDecoration(
                     strokeColorBuilder: PinListenColorBuilder(
-                      Colors.black,
-                      Colors.black26,
+                      Color.fromRGBO(147, 210, 243, 1),
+                      Color.fromRGBO(147, 210, 243, 1),
                     ),
                     obscureStyle: ObscureStyle(isTextObscure: false),
                     gapSpace: 10.0,
@@ -107,8 +107,26 @@ class _OtpPageState extends State<OtpPage> with CodeAutoFill {
                     width: 1,
                   ),
                   currentCode: '',
-                  onCodeSubmitted: (code) {
-                    // Handle code submission
+                  onCodeSubmitted: (code) async {
+                    try {
+                      PhoneAuthCredential credential =
+                          PhoneAuthProvider.credential(
+                        verificationId: widget.verificationid,
+                        smsCode: code,
+                      );
+
+                      final authResult = await FirebaseAuth.instance
+                          .signInWithCredential(credential);
+                      if (authResult.user != null) {
+                        // Navigate to profile page on successful verification
+                        Get.to(ProfilePage());
+                      } else {
+                        Utils().toastMessage('User authentication failed.');
+                      }
+                    } catch (ex) {
+                      log('Error signing in: $ex');
+                      Utils().toastMessage('Something went wrong.');
+                    }
                   },
                   codeLength: 6,
                   onCodeChanged: (code) {
@@ -120,6 +138,8 @@ class _OtpPageState extends State<OtpPage> with CodeAutoFill {
               SizedBox(height: 16.h),
               UiHelper.customizeRichText(
                 onPressed: () async {
+                  Utils().toastMessage(
+                      'Otp send to your ${widget.phone}.Please enter otp again.');
                   try {
                     await FirebaseAuth.instance.verifyPhoneNumber(
                       phoneNumber: widget.phone,
@@ -130,6 +150,9 @@ class _OtpPageState extends State<OtpPage> with CodeAutoFill {
                       },
                       codeSent: (String verificationId, int? resendToken) {
                         setState(() {
+                          // Update verification ID if needed
+                          // In most cases, this won't need to be updated again
+                          // as it's set initially in the constructor
                           widget.verificationid = verificationId;
                         });
                       },
